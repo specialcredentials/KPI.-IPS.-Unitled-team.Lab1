@@ -7,6 +7,7 @@ function startGame() {
     myGamePiece.gravity = 0.05;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     myGameArea.start();
+    initKeyHook();
 }
 
 var myGameArea = {
@@ -113,4 +114,44 @@ function everyinterval(n) {
 
 function accelerate(n) {
     myGamePiece.gravity = n;
+}
+
+function initKeyHook() {
+    document.onkeydown = pressKey;
+    document.onkeyup = releaseKey;
+
+    function pressKey(e) {
+        e = e || window.event;
+        if (e.keyCode == '38') {
+            // up arrow
+            accelerate(-0.2);
+        }
+        else if (e.keyCode == '40') {
+        // down arrow
+        }
+        else if (e.keyCode == '37') {
+        // left arrow
+        }
+        else if (e.keyCode == '39') {
+        // right arrow
+        }
+
+    }
+
+    function releaseKey(e) {
+        e = e || window.event;
+        if (e.keyCode == '38') {
+            // up arrow
+            accelerate(0.05);
+        }
+        else if (e.keyCode == '40') {
+        // down arrow
+        }
+        else if (e.keyCode == '37') {
+        // left arrow
+        }
+        else if (e.keyCode == '39') {
+        // right arrow
+        }
+    }
 }
